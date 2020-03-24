@@ -2,9 +2,9 @@
   "name": "sql",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "node.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "node .js"
   },
   "author": "kurtlin hendricks",
   "license": "ISC"
