@@ -6,7 +6,7 @@ const client = new Client({
   port: 5432,
   database: "db"
 });
-class visitors {
+class Visitors {
   constructor(fullName, age, dateOfVisit, timeOfVisit, assistedBy, comments) {
     this.fullName = fullName;
     this.age = age;
@@ -86,8 +86,8 @@ class visitors {
       .finally(() => client.end());
   }
 }
-let visitor = new Visitor();
-let kurtlin = new Visitor(
+let visitor = new Visitors();
+let kurtlin = new Visitors(
   "kurtlin hendricks",
   28,
   "04-08-2020",
@@ -95,4 +95,5 @@ let kurtlin = new Visitor(
   "john wick",
   "awesome people"
 );
-let lethabo = new Visitor("lethabo jones");
+let lethabo = new Visitors("lethabo jones");
+addNewVisitor();
