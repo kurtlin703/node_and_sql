@@ -86,14 +86,6 @@ class Visitors {
       .finally(() => client.end());
   }
 }
-let visitor = new Visitors();
-let kurtlin = new Visitors(
-  "kurtlin hendricks",
-  28,
-  "04-08-2020",
-  "04-28",
-  "john wick",
-  "awesome people"
-);
-let lethabo = new Visitors("lethabo jones");
-addNewVisitor();
+module.exports = {
+  Visitors
+}

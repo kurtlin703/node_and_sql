@@ -1,11 +1,14 @@
 {
-  "name": "sql",
+  "name": "node",
   "version": "1.0.0",
-  "description": "",
   "main": "node.js",
+  "test command": "node.js",
   "scripts": {
-    "test": "node .js"
+    "test": "node ./src/.js"
   },
   "author": "kurtlin hendricks",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^3.5.0"
+  }
 }
