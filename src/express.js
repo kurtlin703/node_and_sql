@@ -1,86 +1,53 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const { Client } = require("pg");
+const client = new Client({
+  user: "user",
+  password: "pass",
+  host: "localhost",
+  port: 5432,
+  database: "db"
+});
 
+
+let  Visitors  = require("/Visitos").Visitors;
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set("view engine", "pug");
+app.use(express.static("public"));
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/" + "html/index.html");
+});
 
 app.post("/", (req, res) => {
-  /********************************************************************************************************************************
-                        **************************still working on this**************************   
-  class Visitors {
-     constructor(visitorsName, visitorsAge, dateOfVisit, timeOfVisit, assistedVisitor, comments) {
-       this.visitorsAge = visitorsName;
-       this.visitorsAge = visitorsAge;
-       this.dateOfVisit = dateOfVisit;
-   this.timeOfVisit = timeOfVisit;
-       this.assistedVisitor = assistedVisitor;
-       this.comments = comments;
-     }
-     addNewVisitor(){
-  
-     }
-   }
-   let visitorOne = new Visitors(
-     req.body.visitorsName,
-     req.body.visitorsAge,
-     req.body.assistedVisitor,
-     req.body.dateOfVisit,
-     req.body.timeOfVisit,
-     req.body.comments
-
-/ )
- visitorOne.addNewVisitor()
-   res = {
-     visitorsName: req.body.visitorsName,
-     visitorsAge:req.body.visitorsAge,
-     assistedVisitor:req.body.assistedVisitor,
-    dateOfVisit:req.body.dateOfVisit,
-     timeOfVisit:req.body.timeOfVisit,
-     comments:req.body.comments 
-   }
-
-
-     save() {
-       fs.writeFile(
-         "visitor_" + this.fullname + ".json",
-         JSON.stringify(this, null, 4),
-         err => {
-           if (err) {
-             throw ("error", +err);
-           } else {
-             console.log("file written");
-           }
-         }
-       );
-     }
-
-   }
- let database = visitorOne
-********************************************************************************************************************************/
-
-  let database =
-    req.body.visitorsName +
-    " " +
-    req.body.visitorsAge +
-    " " +
-    req.body.assistedVisitor +
-    " " +
-    req.body.dateOfVisit +
-    " " +
-    req.body.timeOfVisit +
-    " " +
-    req.body.comments;
-  let storage = database;
-
-  res.send(
-    "<h1>Thank you for your time your information has been saved below. Be safe and quarantine yourself</h1>" +
-      storage
+  let newVisitor = new Visitor(
+    req.body.visitorsName,
+    req.body.visitorsAge,
+    req.body.dateOfVisit,
+    req.body.timeOfVisit,
+    req.body.assistedVisitor,
+    req.body.comments
   );
+  newVisitor.addNewVisitor();
+
+  let visitorInfo = {
+    VisitorsName: req.body.visitor_name,
+    visitorsAge: req.body.visitor_age,
+    dateOfVisit: req.body.date_of_visit,
+    timeOfVisit: req.body.time_of_visit,
+    assistedVisitor: req.body.your_name,
+    comments: req.body.comments
+  };
+
+  res.render("sample", {
+    title: "Thank you",
+    header:
+      "Thank you for your time your information has been saved in the data. Be safe and quarantine yourself",
+    message: visitorInfo
+  });
 });
 
-app.get("/", (req, res) => {
-  res.sendfile(__dirname + "/index.html");
-});
+
 
 app.listen(3000, () => {
   console.log("you are officially on the server and its on port 3000");
