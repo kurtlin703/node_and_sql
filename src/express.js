@@ -16,15 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "pug");
 app.use(express.static("public"));
 app.get("/", (req, res) => {
-  let url =
-    "localhost:3000?/=addNewVistor&/=deleteVisitor&/=deleteAllVisitors&/=viewVisitors&/=viewVisitor&/=updatevVisitor";
-  https.get(url, (request, response) => {
-    console.log(respond);
 
-    response.on("data", (data) => {
-      let addNewVisitor = newVisitor
-    })
-  });
+  
+
 
   res.sendFile(__dirname + "/" + "index.html");
 });
