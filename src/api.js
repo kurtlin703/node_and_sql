@@ -3,6 +3,16 @@ const https = require("https");
 const bodyParser = require("body-parser");
 const app = express();
 
+pool = new Pool({
+  user: "user",
+  password: "pass",
+  host: "localhost",
+  port: 5432,
+  database: "db"
+
+})
+let {Visitors} = require("./visitoror")
+
 app.get("/", (req, res) => {
   app.use(bodyParser.urlencoded({ extended: true }));
 

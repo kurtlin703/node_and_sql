@@ -15,7 +15,7 @@ class Visitors {
     this.assistedBy = assistedBy;
     this.comments = comments;
   }
-  createTable() {
+  async createTable() {
     client
       .connect()
 
@@ -31,7 +31,7 @@ class Visitors {
       .catch(e => console.log(e))
       .finally(() => client.end());
   }
-  addNewVisitor() {
+  async addNewVisitor() {
     client
       .connect()
       .then(() =>
@@ -51,7 +51,7 @@ class Visitors {
       .catch(e => console.log(e))
       .finally(() => client.end());
   }
-  deleteVisitor() {
+  async deleteVisitor() {
     client
       .connect()
       .then(() =>
@@ -61,7 +61,7 @@ class Visitors {
       .catch(e => console.log(e))
       .finally(() => client.end());
   }
-  updateVisitor() {
+  async updateVisitor() {
     client
       .connect()
       .then(() => client.query("update visitors set where fullname = 2"))
@@ -69,7 +69,7 @@ class Visitors {
       .catch(e => console.log(e))
       .finally(() => client.end());
   }
-  selectVisitor() {
+  async selectVisitor() {
     client
       .connect()
       .then(() => client.query("select * from visitors where id = 1", [id]))
@@ -77,7 +77,7 @@ class Visitors {
       .catch(e => console.log(e))
       .finally(() => client.end());
   }
-  deleteAllVisitors() {
+  async deleteAllVisitors() {
     client
       .connect()
       .then(() => client.query("delete from visitors"))
