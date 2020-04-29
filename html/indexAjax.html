@@ -1,18 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    
-    <title>Document</title>
+    <title>AJAX API Tutorial</title>
 </head>
 <body>
-  
-        <input type="text" name="view visitor" placeholder="view visitor" >
-        <button type="menu" name="submitButton">view visitors</button>
-</hr>
-<div id="status"></div>
+    <h1>AJAX API Tutorial</h1>
+    <button id="get-button">READ/GET Products</button>
+    <form id="create-form" action="/">
+        <input type="text" id="create-input">
+        <button>Create/POST</button>
+    </form>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 
-    
+    <script src="jquery.js"></script>
+    <script src="../src/ajax.js"></script>
 </body>
-<script src=""></script> 
 </html>
